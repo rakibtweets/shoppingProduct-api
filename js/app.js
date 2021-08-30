@@ -2,8 +2,8 @@
 
 const loadAllItems = () => {
     fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(data=> displayAllItems(data))
+    .then(res=>res.json())
+    .then(data=> displayAllItems(data))
 }
 
 loadAllItems();
@@ -12,6 +12,8 @@ loadAllItems();
 
 const displayAllItems = (items) => {
     const allItemContainer = document.getElementById('show-all-items')
+    const lodingSpinner = document.getElementById('shopping-spinner')
+    lodingSpinner.style.display = 'none'
     // single items
     for(const item of items){
         const div = document.createElement('div')
@@ -19,19 +21,20 @@ const displayAllItems = (items) => {
         div.innerHTML = `
         <div class="card p-3 h-100 rounded">
             <div>
-                <img src="${item.image}" class="card-img-top "  height= "300px" alt="..." />
+                <img src="${item.image}" class="card-img-top "  height= "300px" alt="" />
              </div>
          <div class="card-body">
              <h5 class="card-title">${item.title}</h5>
              <h5 class="card-title"><span>$ </span>${item.price}</h5>
-             <p class="card-text"> ${item.description.slice(0,100)}</p>
+             <p class="card-text "> ${item.description.slice(0,100)}</p>
             <a onclick = "loadSigleItems(${item.id})" class="btn btn-primary" href="#show-single-items">Details</a>
-
             </div>
          </div>
         
         `
         allItemContainer.appendChild(div)
+        console.log(allItemContainer)
+    
     }
 };
 
@@ -65,4 +68,5 @@ const displaySingleItem = (item) => {
 
     `;
     singleItemContainer.appendChild(div);
+    // console.log(singleItemContainer);
 };
