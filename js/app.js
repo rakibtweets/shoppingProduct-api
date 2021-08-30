@@ -17,7 +17,7 @@ const displayAllItems = (items) => {
         const div = document.createElement('div')
         div.classList.add('col','d-flex','flex-column')
         div.innerHTML = `
-        <div onclick = "loadSigleItems(${item.id})" class="card p-3 h-100 rounded">
+        <div class="card p-3 h-100 rounded">
             <div>
                 <img src="${item.image}" class="card-img-top "  height= "300px" alt="..." />
              </div>
@@ -25,7 +25,7 @@ const displayAllItems = (items) => {
              <h5 class="card-title">${item.title}</h5>
              <h5 class="card-title"><span>$ </span>${item.price}</h5>
              <p class="card-text"> ${item.description.slice(0,100)}</p>
-            <a class="btn btn-primary" href="#show-single-items">Details</a>
+            <a onclick = "loadSigleItems(${item.id})" class="btn btn-primary" href="#show-single-items">Details</a>
 
             </div>
          </div>
